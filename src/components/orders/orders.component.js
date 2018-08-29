@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Image, Text, FlatList, TouchableOpacity, RefreshControl, } from 'react-native'
+import { View, Image, Text, FlatList, TouchableOpacity, RefreshControl } from 'react-native'
 import NavBar from './navbar.component'
 import styles from './orders-style'
 import { ENVIRONMENT } from '../environment/environment'
@@ -22,6 +22,9 @@ class Orders extends Component {
     }
     this.pullOrders()
 
+  }
+
+  componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({
@@ -29,10 +32,8 @@ class Orders extends Component {
           longitude: position.coords.longitude,
           error: null,
         });
-        this.updateLocation()
       },
       (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
   }
 
@@ -160,8 +161,8 @@ class Orders extends Component {
             region={{
               latitude: this.state.latitude,
               longitude: this.state.longitude,
-              latitudeDelta: 0.03,
-              longitudeDelta: 0.03,
+              latitudeDelta: 0.01,
+              longitudeDelta: 0.01,
             }}
           >
             <Marker title='You are here' coordinate={{ latitude: this.state.latitude, longitude: this.state.longitude }}></Marker>

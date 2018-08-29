@@ -22,7 +22,7 @@ target 'Foodtruck Truckr' do
     'RCTWebSocket',
   ]
 
-   pod 'Folly', :podspec => "#{rn_path}/third-party-podspecs/Folly.podspec"
+  pod 'Folly', :podspec => "#{rn_path}/third-party-podspecs/Folly.podspec"
 
   pod 'react-native-maps', path: rn_maps_path
   pod 'react-native-google-maps', path: rn_maps_path 
